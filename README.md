@@ -1,3 +1,3 @@
-# boardom
+# BOARDOM
 
 COMPLICATED BOARD

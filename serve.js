@@ -8,11 +8,16 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const port = 26273; // B O A R D
 
+const http = {
+    success: 200,
+    created: 201,
+};
+
 app.use(express.json()); // parse json
 app.use(express.static(path.join(__dirname, "/app/"))); // serve from app
 
 app.get("/api/status", async (req, res) => {
-    res.send(200);
+    res.send(http.success);
 });
 
 app.get("/api/get-posts", async (req, res) => {
@@ -26,7 +31,7 @@ app.post("/api/create-post", async (req, res) => {
     const posts = JSON.parse(postFile);
     posts.push(req.body.title);
     fs.writeFile("data/posts.json", JSON.stringify(posts));
-    res.send(201);
+    res.send(http.created);
 });
 
 app.listen(port, () => {

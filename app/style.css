@@ -12,12 +12,13 @@ body {
 } */
 
 h1 {
-    font-family: "Bungee", sans-serif;
     font-size: 5vw;
 }
 
-h2 {
-    padding-left: 1rem;
+.box > * {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    padding-top: -1rem;
 }
 
 a {
@@ -50,13 +51,6 @@ textarea {
     width: 900px;
 } */
 
-.tall {
-    aspect-ratio: 1 / 1.2;
-}
-
-.wide {
-    aspect-ratio: 1.6 / 1;
-}
 .masonry-with-columns {
     columns: 6 200px;
     column-gap: 1rem;

@@ -28,16 +28,25 @@ function createPostElement(post) {
 
     const div = document.createElement("div");
     div.classList.add("box");
-    // div.style.height = /* div.style.lineHeight = */ `${
-    //     Math.random() * 400 + 100
-    // }px`;
 
     const title = document.createElement("h2");
     title.textContent = post.title;
 
-    const br = document.createElement("br");
-
     div.appendChild(title);
+
+    if (post.body) {
+        const postBody = document.createElement("div");
+        for (let bodyElement of post.body) {
+            switch (bodyElement.type) {
+                case "text":
+                    const text = document.createElement("p");
+                    text.textContent = bodyElement.content.text;
+                    postBody.appendChild(text);
+            }
+        }
+        div.appendChild(postBody);
+    }
+
     postContainer.appendChild(div);
 }
 

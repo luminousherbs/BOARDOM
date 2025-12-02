@@ -21,6 +21,14 @@ app.get("/api/get-posts", async (req, res) => {
     res.send(posts);
 });
 
+app.post("/api/create-post", async (req, res) => {
+    const postFile = await fs.readFile("data/posts.json", "utf8");
+    const posts = JSON.parse(postFile);
+    posts.push(req.body.title);
+    fs.writeFile("data/posts.json", JSON.stringify(posts));
+    res.send(201);
+});
+
 app.listen(port, () => {
     console.log(`Listening on ${port}`);
 });

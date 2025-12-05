@@ -1,5 +1,7 @@
-const textField = document.querySelector("#text-field");
+const titleField = document.querySelector("#title-field");
+const bodyField = document.querySelector("#body-field");
 const postContainer = document.querySelector("#post-container");
+const createPostForm = document.querySelector("#create-post-form");
 
 async function getUrl(url) {
     return await fetch(url, {
@@ -57,15 +59,26 @@ function displayPosts(posts) {
     }
 }
 
-async function createPost(title) {
-    postUrl("/api/create-post", { title: title }).then(async (res) => {
+async function createPost(postData) {
+    postUrl("/api/create-post", postData).then(async (res) => {
         const posts = await getPosts();
         displayPosts(posts);
     });
 }
 
-submit.addEventListener("click", () => {
-    createPost(textField.value);
+createPostForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    createPost({
+        title: titleField.value,
+        body: [
+            {
+                type: "text",
+                content: {
+                    text: bodyField.value,
+                },
+            },
+        ],
+    });
 });
 
 const posts = await getPosts();

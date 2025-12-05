@@ -17,8 +17,26 @@
     </head>
     <body>
         <h1>BOARDOM: COMPLICATED BOARD</h1>
-        <input type="text" id="text-field" />
-        <button id="submit"></button>
-        <div id="post-container" class="masonry-with-columns"></div>
+        <section id="main-section" class="main-section">
+            <form id="create-post-form">
+                <input
+                    type="text"
+                    id="title-field"
+                    name="title"
+                    placeholder="Title"
+                />
+                <br />
+                <textarea
+                    type="text"
+                    id="body-field"
+                    name="body"
+                    placeholder="Body"
+                ></textarea>
+                <br />
+                <button type="submit">Submit</button>
+            </form>
+            <br />
+            <div id="post-container" class="masonry-with-columns"></div>
+        </section>
     </body>
 </html>

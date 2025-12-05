@@ -14,6 +14,7 @@ const http = {
 };
 
 app.use(express.json()); // parse json
+app.use(express.urlencoded({ extended: true })); // parse html forms
 app.use(express.static(path.join(__dirname, "/app/"))); // serve from app
 
 app.get("/api/status", async (req, res) => {
@@ -29,9 +30,10 @@ app.get("/api/get-posts", async (req, res) => {
 app.post("/api/create-post", async (req, res) => {
     const postFile = await fs.readFile("data/posts.json", "utf8");
     const posts = JSON.parse(postFile);
-    posts.unshift({ title: req.body.title });
+    posts.unshift({ title: req.body.title, body: req.body.body });
     fs.writeFile("data/posts.json", JSON.stringify(posts));
-    res.send(http.created);
+    // res.send(http.created);
+    res.send({ ok: true });
 });
 
 app.listen(port, () => {

@@ -36,6 +36,10 @@ app.post("/api/create-post", async (req, res) => {
     res.send({ ok: true });
 });
 
+app.post("/api/cease", async (req, res) => {
+    process.exit(0);
+});
+
 app.listen(port, () => {
     console.log(`Listening on ${port}`);
 });

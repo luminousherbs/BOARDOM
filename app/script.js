@@ -2,6 +2,7 @@ const titleField = document.querySelector("#title-field");
 const bodyField = document.querySelector("#body-field");
 const postContainer = document.querySelector("#post-container");
 const createPostForm = document.querySelector("#create-post-form");
+const ceaseButton = document.querySelector("#cease");
 
 async function getUrl(url) {
     return await fetch(url, {
@@ -88,6 +89,11 @@ createPostForm.addEventListener("submit", async (e) => {
 
 bodyField.addEventListener("input", () => {
     autoResize(bodyField);
+});
+
+ceaseButton.addEventListener("click", () => {
+    document.body.classList.add("break");
+    postUrl("/api/cease");
 });
 
 const posts = await getPosts();

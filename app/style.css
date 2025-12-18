@@ -137,3 +137,13 @@ form {
 .submit:hover {
     background-color: #f0f0f0;
 }
+
+.break * {
+    transform: rotate(5deg) translateY(100vh);
+    opacity: 0.8;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.break *:nth-child(3n) {
+    transform: rotate(-10deg);
+}

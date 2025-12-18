@@ -1,7 +1,10 @@
+* {
+    font-family: "Ubuntu", sans-serif;
+}
+
 body {
     background-color: #1b1b1b;
     color: #f0f0f0;
-    font-family: "Ubuntu", sans-serif;
     margin: 0;
     padding: 1rem;
 }
@@ -12,7 +15,7 @@ body {
 }
 
 h1 {
-    font-size: max(5.5vw, 24px);
+    font-size: max(5.5vw, 2em);
     text-align: center;
 }
 
@@ -20,6 +23,31 @@ h1 {
     h1 {
         text-align: left;
     }
+}
+
+input {
+    background-color: #1b1b1b00;
+    color: #f0f0f0;
+    border-radius: 10px;
+    border: none;
+    padding: 0.2rem;
+    /* margin-bottom: 0.5em; */
+}
+
+input.primary-field {
+    font-size: 2em;
+    font-weight: 800;
+}
+
+input:focus,
+input:focus-visible {
+    outline: none;
+    /* background-color: #4b4b4b; */
+}
+
+textarea {
+    font-size: 1em;
+    font-weight: 400;
 }
 
 /* .heading {
@@ -53,7 +81,19 @@ a {
 
 textarea {
     width: 100%;
-    margin-bottom: 1em;
+    background-color: #1b1b1b00;
+    color: #f0f0f0;
+    border-radius: 10px;
+    border: none;
+    padding: 0.2rem;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+    resize: none;
+}
+
+textarea:focus,
+textarea:focus-visible {
+    outline: none;
 }
 
 /* .grid {
@@ -75,11 +115,25 @@ textarea {
     display: inline-block;
     width: 100%;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     transition: all 100ms ease;
     background-color: #5c3d5e;
 }
 
 form {
-    width: clamp();
+    width: 100%;
+    padding-left: 0.4em;
+    padding-top: 0.2em;
+    padding-bottom: 0.6rem;
+    background-color: #2b2b2b;
+    border-radius: 0.5rem;
+}
+
+.submit {
+    background-color: #d0d0d0;
+    border-radius: 0.2rem;
+}
+
+.submit:hover {
+    background-color: #f0f0f0;
 }

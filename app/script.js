@@ -66,6 +66,11 @@ async function createPost(postData) {
     });
 }
 
+function autoResize(el) {
+    el.style.height = "auto"; // reset
+    el.style.height = el.scrollHeight + "px";
+}
+
 createPostForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     createPost({
@@ -79,6 +84,10 @@ createPostForm.addEventListener("submit", async (e) => {
             },
         ],
     });
+});
+
+bodyField.addEventListener("input", () => {
+    autoResize(bodyField);
 });
 
 const posts = await getPosts();

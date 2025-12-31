@@ -16,7 +16,10 @@
         <title>BOARDOM</title>
     </head>
     <body>
-        <h1>BOARDOM: COMPLICATED BOARD</h1>
+        <h1>
+            <span class="desktop-text">BOARDOM: COMPLICATED BOARD </span>
+            <span class="mobile-text">BOARDOM</span>
+        </h1>
         <section id="main-section" class="main-section">
             <form id="create-post-form">
                 <input
@@ -25,6 +28,7 @@
                     name="title"
                     class="primary-field"
                     placeholder="Title"
+                    autocomplete="off"
                 />
                 <br />
                 <textarea
@@ -33,15 +37,16 @@
                     name="body"
                     placeholder="Body"
                     rows="1"
+                    autocomplete="off"
                 ></textarea>
                 <br />
+                <button id="add">+</button>
                 <button type="submit" class="submit">Submit</button>
             </form>
-            <br />
             <div id="post-container" class="masonry-with-columns"></div>
-            <footer>
-                <button id="cease">CEASE</button>
-            </footer>
         </section>
+        <footer>
+            <button id="cease">CEASE</button>
+        </footer>
     </body>
 </html>

@@ -22,25 +22,24 @@
         </h1>
         <section id="main-section" class="main-section">
             <form id="create-post-form">
-                <input
-                    type="text"
-                    id="title-field"
-                    name="title"
-                    class="primary-field"
-                    placeholder="Title"
-                    autocomplete="off"
-                />
+                <div id="form-fields" class="form-fields">
+                    <input
+                        type="text"
+                        data-type="title"
+                        id="title-field"
+                        name="title"
+                        class="primary-field"
+                        placeholder="Title"
+                        autocomplete="off"
+                    />
+                </div>
                 <br />
-                <textarea
-                    type="text"
-                    id="body-field"
-                    name="body"
-                    placeholder="Body"
-                    rows="1"
-                    autocomplete="off"
-                ></textarea>
-                <br />
-                <button id="add">+</button>
+                <button id="add">+ Add field</button>
+                <dialog class="field-popup" id="field-popup" closedby="any">
+                    <button data-type="text">Text</button>
+                    <button data-type="image">Image</button>
+                    <button data-type="link">Link</button>
+                </dialog>
                 <button type="submit" class="submit">Submit</button>
             </form>
             <div id="post-container" class="masonry-with-columns"></div>
@@ -48,5 +47,24 @@
         <footer>
             <button id="cease">CEASE</button>
         </footer>
+
+        <template id="text-field">
+            <textarea
+                data-type="text"
+                id="body-field"
+                name="body"
+                placeholder="Text"
+                rows="1"
+                autocomplete="off"
+            ></textarea>
+        </template>
+
+        <template id="image-field">
+            <input
+                type="file"
+                data-type="image"
+                accept=".jpeg, .jpg, .png, .webp, .gif, .avif, .svg"
+            />
+        </template>
     </body>
 </html>

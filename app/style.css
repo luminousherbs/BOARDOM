@@ -1,5 +1,6 @@
 * {
     font-family: "Ubuntu", sans-serif;
+    outline: none;
 }
 
 body {
@@ -137,6 +138,7 @@ textarea:focus-visible {
 form {
     width: 100%;
     padding-left: 0.4em;
+    padding-right: 0.4em;
     padding-top: 0.2em;
     padding-bottom: 0.6rem;
     background-color: #2b2b2b;
@@ -189,4 +191,55 @@ form {
     .mobile-text {
         display: inline;
     }
+}
+
+button {
+    cursor: pointer;
+}
+
+.field-popup {
+    color: inherit;
+    background-color: #5b5b5b;
+    outline: none;
+    border: 2px #7b7b7b solid;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: left;
+}
+
+.field-popup::backdrop {
+    backdrop-filter: blur(1px);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.field-popup > button {
+    text-align: left;
+    font-size: 1.5em;
+    background-color: #1b1b1b;
+    color: #ebebeb;
+    border: 2px #3b3b3b solid;
+    border-radius: 4px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.field-popup {
+    display: none;
+}
+
+.field-popup[open] {
+    display: flex;
+}
+
+input[type="file"] {
+    display: inline-block;
+    background-color: #5b5b5b;
+    cursor: pointer;
+    border-radius: 6px;
+    width: 100%;
+    aspect-ratio: 1;
+    background-size: 100% 100%;
+    box-sizing: border-box;
 }

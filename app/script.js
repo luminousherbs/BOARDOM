@@ -55,6 +55,12 @@ function createPostElement(post) {
                     const text = document.createElement("p");
                     text.textContent = bodyElement.content.text;
                     postBody.appendChild(text);
+                    break;
+                default:
+                    alert(
+                        `Unrecognized body element of type ${bodyElement.type}`
+                    );
+                    break;
             }
         }
         div.appendChild(postBody);

@@ -1,4 +1,4 @@
-!.gitkeep
-
-data/posts.json
 data/images/*
+data/posts.json
+
+!.gitkeep

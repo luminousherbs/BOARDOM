@@ -54,7 +54,7 @@ function createPostElement(post) {
             switch (bodyElement.type) {
                 case "text":
                     const text = document.createElement("p");
-                    text.textContent = bodyElement.content;
+                    text.innerHTML = bodyElement.content;
                     postBody.appendChild(text);
                     break;
 

@@ -23,6 +23,7 @@ async function getUrl(url) {
 }
 
 async function postUrl(url, data) {
+    console.log(data);
     return await fetch(url, {
         method: "POST",
         body: JSON.stringify(data),
@@ -53,12 +54,22 @@ function createPostElement(post) {
             switch (bodyElement.type) {
                 case "text":
                     const text = document.createElement("p");
-                    text.textContent = bodyElement.content.text;
+                    text.textContent = bodyElement.content;
                     postBody.appendChild(text);
                     break;
+
+                case "image":
+                    const image = document.createElement("img");
+                    image.src = bodyElement.content;
+                    postBody.appendChild(image);
+                    break;
+
                 default:
-                    alert(
-                        `Unrecognized body element of type ${bodyElement.type}`
+                    const errorMessage = document.createElement("p");
+                    errorMessage.textContent = `this client doesn't support "${bodyElement.type}"`;
+                    postBody.appendChild(errorMessage);
+                    console.error(
+                        `Unrecognized field type "${bodyElement.type}"`
                     );
                     break;
             }
@@ -97,23 +108,29 @@ function createField(type) {
     formFields.appendChild(field);
 }
 
-function updateBackground(element, image) {
+function updateImage(element, image) {
+    const reader = new FileReader();
+    reader.onload = () => {
+        element.fieldContent = reader.result;
+    };
+    reader.readAsDataURL(image);
     const imageURL = URL.createObjectURL(image);
     element.style.backgroundImage = `url("${imageURL}")`;
 }
 
 createPostForm.addEventListener("submit", async (event) => {
     event.preventDefault();
+    const fields = Array.from(formFields.children);
+    const postBody = [];
+    fields.forEach((field) => {
+        postBody.push({
+            type: field.dataset.type,
+            content: field.fieldContent,
+        });
+    });
     createPost({
         title: titleField.value,
-        body: [
-            {
-                type: "text",
-                content: {
-                    text: "bodyField.value",
-                },
-            },
-        ],
+        body: postBody,
     });
 });
 
@@ -122,7 +139,12 @@ formFields.addEventListener("input", (event) => {
         case "image":
             // release the files
             const image = event.target.files[0];
-            updateBackground(event.target, image);
+            updateImage(event.target, image);
+            break;
+
+        case "text":
+            event.target.fieldContent = event.target.value;
+            break;
 
         default:
             break;
@@ -142,10 +164,6 @@ addButton.addEventListener("click", (event) => {
     // stop form submission
     event.preventDefault();
     fieldPopup.showModal();
-});
-
-templates.fields.image.addEventListener("input", (event) => {
-    console.log(event);
 });
 
 Array.from(fieldPopup.children).forEach((button) => {

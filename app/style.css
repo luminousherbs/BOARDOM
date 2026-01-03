@@ -243,3 +243,9 @@ input[type="file"] {
     background-size: 100% 100%;
     box-sizing: border-box;
 }
+
+img {
+    width: 100%;
+    aspect-ratio: 1;
+    box-sizing: border-box;
+}
